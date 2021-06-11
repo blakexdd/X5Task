@@ -30,4 +30,9 @@ export type LogLevel = 'LOW' | 'MEDIUM' | 'HIGH'
 export enum ServiceNames {
   GRAPH = 'GRAPH',
   AUTH = 'AUTH',
+  ORDERS = 'ORDERS',
+}
+
+export interface UpdatedUsersCount {
+  count: number
 }
