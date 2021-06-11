@@ -39,6 +39,7 @@
     "adonis5-sentry": "^1.1.0",
     "adonis5-swagger": "^1.2.3",
     "axios": "^0.21.1",
+    "fast-json-stable-stringify": "^2.1.0",
     "luxon": "^1.26.0",
     "mysql": "^2.18.1",
     "phc-argon2": "^1.1.0",

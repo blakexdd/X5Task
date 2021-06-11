@@ -1,4 +1,5 @@
-import { VertexRepresentation, Vertex } from 'Contracts/types'
+import { VertexRepresentation, Vertex, ServiceNames } from 'Contracts/types'
+import { ElkLogger } from 'App/Services/HelperService'
 
 type GraphType = { [key in number]: number[] }
 export class Graph {
@@ -16,12 +17,18 @@ export class Graph {
   }
 
   public addEdge(firstVertex: number, secondVertex: number) {
+    ElkLogger.log(ServiceNames.GRAPH, 'Adding edge to graph', {
+      graph: this.graph,
+      firstVertex,
+      secondVertex,
+    })
     this.addEdgeToGraphDict(this.graph, firstVertex, secondVertex)
   }
 
   private isCyclic(currentVertex: number, visited: boolean[], parent: number): boolean {
     visited[currentVertex] = true
     const vertexChildren = this.graph[currentVertex] || []
+
     for (const vertex of vertexChildren) {
       if (!visited[vertex]) {
         if (this.isCyclic(vertex, visited, currentVertex)) {
@@ -47,6 +54,7 @@ export class Graph {
 
   public buildJsonRepresentation(rootId: number): VertexRepresentation {
     if (!this.graph.hasOwnProperty(rootId)) {
+      ElkLogger.error(ServiceNames.GRAPH, `Not vertex with id: ${rootId}`)
       throw new Error(`Not vertex with id: ${rootId}`)
     }
 
@@ -81,6 +89,11 @@ export function buildAndValidateTree(vertexes: Vertex[]): Graph {
   }
 
   const isTree = graph.isTree()
+
+  ElkLogger.log(ServiceNames.GRAPH, 'Validating tree', {
+    vertexes,
+    isTree,
+  })
 
   if (!isTree) {
     throw Error('Graph is not valid tree')

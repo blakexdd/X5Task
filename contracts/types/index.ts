@@ -24,3 +24,10 @@ export interface VertexRepresentation {
 export interface Post200ApiGraphsGetTreeJsonRepresentation {
   representation: VertexRepresentation
 }
+
+export type LogLevel = 'LOW' | 'MEDIUM' | 'HIGH'
+
+export enum ServiceNames {
+  GRAPH = 'GRAPH',
+  AUTH = 'AUTH',
+}
