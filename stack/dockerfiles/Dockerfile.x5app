@@ -1,0 +1,14 @@
+FROM node:14.16.0-alpine3.12
+WORKDIR /build
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN node ace build --production && node ace generate:manifest && node ace yamlFromTs
+
+FROM node:14.16.0-alpine3.12
+COPY --from=0 /build/build /app
+COPY --from=0 /build/test-helpers/ /app/test-helpers/
+COPY --from=0 /build/node_modules /app/node_modules
+WORKDIR /app
+EXPOSE 3333
+CMD ["npm", "start"]
