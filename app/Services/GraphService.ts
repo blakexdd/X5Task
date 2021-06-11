@@ -1,27 +1,28 @@
-type GraphType = { [key in number]: number[] }
+import { VertexRepresentation, Vertex } from 'Contracts/types'
 
+type GraphType = { [key in number]: number[] }
 export class Graph {
   private graph: GraphType
   constructor(private vertexCount: number) {
     this.graph = {}
   }
 
-  private addEdgeToGraphDict(firstVertex: number, secondVertex: number) {
-    if (this.graph.hasOwnProperty(firstVertex)) {
-      this.graph[firstVertex].push(secondVertex)
+  private addEdgeToGraphDict(dict: GraphType, firstVertex: number, secondVertex: number) {
+    if (dict.hasOwnProperty(firstVertex)) {
+      dict[firstVertex].push(secondVertex)
     } else {
-      this.graph[firstVertex] = [secondVertex]
+      dict[firstVertex] = [secondVertex]
     }
   }
 
   public addEdge(firstVertex: number, secondVertex: number) {
-    this.addEdgeToGraphDict(firstVertex, secondVertex)
-    this.addEdgeToGraphDict(secondVertex, firstVertex)
+    this.addEdgeToGraphDict(this.graph, firstVertex, secondVertex)
   }
 
   private isCyclic(currentVertex: number, visited: boolean[], parent: number): boolean {
     visited[currentVertex] = true
-    for (const vertex of this.graph[currentVertex]) {
+    const vertexChildren = this.graph[currentVertex] || []
+    for (const vertex of vertexChildren) {
       if (!visited[vertex]) {
         if (this.isCyclic(vertex, visited, currentVertex)) {
           return true
@@ -43,4 +44,47 @@ export class Graph {
 
     return visited.every((visitedVertex) => visitedVertex)
   }
+
+  public buildJsonRepresentation(rootId: number): VertexRepresentation {
+    if (!this.graph.hasOwnProperty(rootId)) {
+      throw new Error(`Not vertex with id: ${rootId}`)
+    }
+
+    const jsonVertexRepresentation: VertexRepresentation = { id: rootId, children: [] }
+
+    return this.getVertexRepresentation(rootId, jsonVertexRepresentation)
+  }
+
+  private getVertexRepresentation(
+    id: number,
+    jsonVertexRepresentation: VertexRepresentation
+  ): VertexRepresentation {
+    if (!this.graph.hasOwnProperty(id)) {
+      return { id, children: [] }
+    }
+
+    return {
+      id,
+      children: this.graph[id].map((id) => {
+        return this.getVertexRepresentation(id, jsonVertexRepresentation)
+      }),
+    }
+  }
+}
+
+export function buildAndValidateTree(vertexes: Vertex[]): Graph {
+  const vertexCount = vertexes.length
+  const graph = new Graph(vertexCount)
+
+  for (const vertex of vertexes) {
+    graph.addEdge(vertex.parent, vertex.id)
+  }
+
+  const isTree = graph.isTree()
+
+  if (!isTree) {
+    throw Error('Graph is not valid tree')
+  }
+
+  return graph
 }

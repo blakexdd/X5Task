@@ -22,7 +22,17 @@ components:
         - id
         - parent
       additionalProperties: false
-    PostApiGraphs:
+    PostApiGraphsGetTreeImageRepresentation:
+      type: object
+      properties:
+        vertexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vertex'
+      required:
+        - vertexes
+      additionalProperties: false
+    PostApiGraphsGetTreeJsonRepresentation:
       type: object
       properties:
         vertexes:
@@ -34,4 +44,25 @@ components:
       required:
         - vertexes
         - rootId
+      additionalProperties: false
+    VertexRepresentation:
+      type: object
+      properties:
+        id:
+          type: number
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/VertexRepresentation'
+      required:
+        - id
+        - children
+      additionalProperties: false
+    Post200ApiGraphsGetTreeJsonRepresentation:
+      type: object
+      properties:
+        representation:
+          $ref: '#/components/schemas/VertexRepresentation'
+      required:
+        - representation
       additionalProperties: false

@@ -16,6 +16,7 @@ export const defaultUser = {
   email: 'blakexxxd@gmail.com',
   password: 'sdfoOekqlcpakd94',
 }
+export const treeVisualizeUrl: string = Env.get('TREE_VISUALIZE_URL')
 /*
 |--------------------------------------------------------------------------
 | Application secret key
