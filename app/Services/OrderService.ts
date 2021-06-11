@@ -47,7 +47,7 @@ export async function updateUsersProblemStateMediumSpeed(): Promise<UpdatedUsers
 
 export async function updateUsersProblemStateHighSpeed(): Promise<UpdatedUsersCount> {
   const updateResult = await Database.rawQuery(
-    'UPDATE users SET problem=true WHERE id IN (SELECT user_id FROM orders);'
+    'UPDATE users SET problem=true WHERE id IN (SELECT user_id FROM orders) and problem=false;'
   )
   ElkLogger.log(ServiceNames.ORDERS, 'Users updated', updateResult)
 
