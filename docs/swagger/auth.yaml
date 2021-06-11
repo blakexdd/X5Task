@@ -1,0 +1,51 @@
+paths:
+  /api/auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Authorize user by login and password
+      parameters:
+        - $ref: '#/parameters/language'
+      requestBody:
+        required: true
+        description: Authorization
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiAuthLogin'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Success
+        422:
+          description: Wrong login or password
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    description: string of errors
+                    type: string
+                    example: 'Login error'
+                  isCustomErrors:
+                    description: If error is custom
+                    type: boolean
+                    example: true
+  /api/auth/logout:
+    get:
+      parameters:
+        - $ref: '#/parameters/language'
+      summary: Logout from the system
+      tags:
+        - Auth
+      security:
+        - sessionAuth: []
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Success
+        422:
+          description: Something went wrong

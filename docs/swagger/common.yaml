@@ -1,0 +1,12 @@
+tags:
+  - name: Auth
+    description: Authorization methods
+parameters:
+  language:
+    in: header
+    name: 'Accept-Language'
+    description: Language of errors
+    schema:
+      type: string
+    required: false
+    example: 'ru-RU'
