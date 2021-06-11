@@ -25,6 +25,8 @@ Route.group(() => {
     Route.post('login', 'Api/AuthController.login')
     Route.get('logout', 'Api/AuthController.logout').middleware('auth')
   }).prefix('auth')
+
+  Route.post('graph/get-tree', 'Api/GraphsController.getTree').middleware('auth')
 }).prefix('api')
 
 // Route.get('/', async ({ request }) => {

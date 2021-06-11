@@ -1,6 +1,8 @@
 tags:
   - name: Auth
     description: Authorization methods
+  - name: Graphs
+    description: Graphs methods
 parameters:
   language:
     in: header

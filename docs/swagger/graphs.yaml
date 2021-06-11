@@ -1,0 +1,22 @@
+paths:
+  /api/graph/get-tree:
+    post:
+      tags:
+        - Graphs
+      summary: Validate that graph is a tree and if so, get tree image
+      parameters:
+        - $ref: '#/parameters/language'
+      requestBody:
+        required: true
+        description: Tree representation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiGraphs'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Success
+        422:
+          description: Wrong login or password

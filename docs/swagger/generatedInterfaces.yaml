@@ -11,3 +11,27 @@ components:
         - email
         - password
       additionalProperties: false
+    Vertex:
+      type: object
+      properties:
+        id:
+          type: number
+        parent:
+          type: number
+      required:
+        - id
+        - parent
+      additionalProperties: false
+    PostApiGraphs:
+      type: object
+      properties:
+        vertexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vertex'
+        rootId:
+          type: number
+      required:
+        - vertexes
+        - rootId
+      additionalProperties: false
