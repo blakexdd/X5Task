@@ -1,4 +1,5 @@
 #!/bin/bash
+cp .env.example .env
 docker login $CI_REPOSITORY_NAME $CI_REPOSITORY_PASSWORD 
 docker build -t $APP_IMAGE -f stack/dockerfiles/Dockerfile.x5app .
 docker push $APP_IMAGE
