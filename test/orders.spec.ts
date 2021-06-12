@@ -16,7 +16,7 @@ const perf = Perf()
 test.group('Orders test', (group) => {
   group.before(async () => {
     if (process.env.CREATE_USER_ORDERS) {
-      const users = await UserFactory.with('order', 1000).createMany(5000)
+      const users = await UserFactory.with('order', 100).createMany(500)
       ElkLogger.log(ServiceNames.ORDERS, 'Created users with posts', users)
     }
     await before(client)

@@ -21,6 +21,7 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       TREE_VISUALIZE_URL: http://python-app:8000/get-tree
+      CREATE_USER_ORDERS: 1
     command: sh -c "node ace db:wait && node ace migration:run && node ace db:seed && node japaFile.js test/**/*.spec.js"
     networks:
       - default
