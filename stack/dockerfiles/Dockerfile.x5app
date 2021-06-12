@@ -3,7 +3,7 @@ WORKDIR /build
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN node ace build --production && node ace generate:manifest && node ace yamlFromTs && node ace generate:swagger
+RUN node ace build --production --ignore-ts-errors && node ace generate:manifest && node ace yamlFromTs && node ace generate:swagger
 
 FROM node:14.16.0-alpine3.12
 COPY --from=0 /build/build /app

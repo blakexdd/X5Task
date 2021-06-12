@@ -1,6 +1,6 @@
 # X5Task
 
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/blakexdd/X5Task/actions/workflows/main.yml/badge.svg)
 
 ## Backend application written in adonis ts
 
