@@ -17,7 +17,7 @@ test.group('Orders test', (group) => {
   group.before(async () => {
     if (process.env.CREATE_USER_ORDERS) {
       const users = await UserFactory.with('order', 100).createMany(500)
-      ElkLogger.log(ServiceNames.ORDERS, 'Created users with posts', users)
+      ElkLogger.log(ServiceNames.ORDERS, 'Created users with posts', users.length)
     }
     await before(client)
   })
