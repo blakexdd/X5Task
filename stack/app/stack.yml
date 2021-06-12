@@ -33,7 +33,7 @@ services:
   python-app:
     labels:
       - app=app
-    image: x5python-app
+    image: $PYTHON_APP_IMAGE
     networks:
       - app
     logging:
@@ -57,7 +57,7 @@ services:
   app:
     labels:
       - app=app
-    image: x5app
+    image: $APP_IMAGE
     networks:
       - app
     logging:

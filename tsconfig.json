@@ -9,7 +9,6 @@
     "sourceMap": true,
     "paths": {
       "App/*": ["./app/*"],
-      "SwCloudContracts/*": ["./sw_cloud_contracts/*"],
       "Config/*": ["./config/*"],
       "Contracts/*": ["./contracts/*"],
       "Database/*": ["./database/*"]
