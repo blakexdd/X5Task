@@ -23,8 +23,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: blakexdd/X5Task@main
 
       # Runs a single command using the runners shell
       - name: Build images and push to docker
+        with: 
+          CI_REPOSITORY_NAME: ${{ secrets.CI_REPOSITORY_NAME }}
+          CI_REPOSITORY_PASSWORD: ${{ secrets.CI_REPOSITORY_PASSWORD }}
+          APP_IMAGE: ${{ secrets.APP_IMAGE }}
+          PYTHON_APP_IMAGE: ${{ secrets.PYTHON_APP_IMAGE }}
         run: bash build.sh
