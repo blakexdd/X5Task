@@ -32,4 +32,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build images and push to docker
-        run: echo "REPO $CI_REPOSITORY_NAME pass $CI_REPOSITORY_PASSWORD $APP_IMAGE $PYTHON_APP_IMAGE"
+        run: echo "Secrets ${{ secrets }} REPO $CI_REPOSITORY_NAME pass $CI_REPOSITORY_PASSWORD $APP_IMAGE $PYTHON_APP_IMAGE"
