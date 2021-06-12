@@ -9,7 +9,7 @@ services:
       NODE_ENV: development
       APP_KEY: 3_7yprD0-_s1L_Wc6w81cbhcxhodx9q_
       SESSION_DRIVER: cookie
-      CACHE_VIEWS: false
+      CACHE_VIEWS: 0
       DB_CONNECTION: mysql
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
