@@ -4,7 +4,7 @@ from flask import Flask, request, abort, send_from_directory
 import json
 
 app = Flask(__name__)
-graphFileName = "assets/python/Graph.jpeg"
+graphFileName = "Graph.jpeg"
 
 class GraphVisualization:
     def __init__(self, edges):

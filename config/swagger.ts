@@ -12,9 +12,9 @@ export default {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'Application with swagger docs',
+        title: 'X5test application',
         version: '1.0.0',
-        description: 'My application with swagger docs',
+        description: 'Application written in adonis ts in conjunction with devops technologies',
       },
     },
 
@@ -22,5 +22,5 @@ export default {
     basePath: '/',
   },
   mode: process.env.NODE_ENV === 'production' ? 'PRODUCTION' : 'RUNTIME',
-  specFilePath: 'docs/swagger.json',
+  specFilePath: '/swagger.json',
 } as SwaggerConfig

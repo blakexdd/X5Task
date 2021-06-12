@@ -78,24 +78,7 @@ services:
         condition: any
         delay: 1s
         window: 10s
-    environment:
-      - PORT=3333
-      - HOST=0.0.0.0
-      - NODE_ENV=development
-      - APP_KEY=3_7yprD0-_s1L_Wc6w81cbhcxhodx9q_
-      - SESSION_DRIVER=cookie
-      - CACHE_VIEWS=false
-      - DB_CONNECTION=mysql
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3306
-      - MYSQL_USER=app
-      - MYSQL_PASSWORD=app
-      - MYSQL_DB_NAME=app
-      - SESSION_DRIVER=redis
-      - REDIS_CONNECTION=local
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - TREE_VISUALIZE_URL=http://python-app:8000/get-tree
+    env_file: app.env
 
 networks:
   app:

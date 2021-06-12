@@ -8,11 +8,20 @@ export interface Vertex {
   parent: number
 }
 export interface PostApiGraphsGetTreeImageRepresentation {
+  /**
+   * @default [{"id": 2, "parent": 1}, {"id": 1, "parent": 0}, {"id": 3, "parent": 1}]
+   */
   vertexes: Vertex[]
 }
 
 export interface PostApiGraphsGetTreeJsonRepresentation {
+  /**
+   * @default [{"id": 2, "parent": 1}, {"id": 1, "parent": 0}, {"id": 3, "parent": 1}]
+   */
   vertexes: Vertex[]
+  /**
+   * @default 0
+   */
   rootId: number
 }
 

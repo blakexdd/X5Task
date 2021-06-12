@@ -22,6 +22,17 @@
       "aliases": [],
       "flags": []
     },
+    "generate:swagger": {
+      "settings": {
+        "loadApp": true
+      },
+      "commandPath": "./commands/GenerateSwagger",
+      "commandName": "generate:swagger",
+      "description": "Generate swagger file",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "yamlFromTs": {
       "settings": {},
       "commandPath": "./commands/YamlFromTs",
